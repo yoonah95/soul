@@ -1,0 +1,40 @@
+.Egg {
+    height: 90%;
+    width: 100%;
+    background-color: #e6a8ed;
+}
+.EggTitle {
+    width: 50%;
+    height: 20%;
+    font-size: 25px;
+    float: left;
+}
+.Deadline {
+    width: 50%;
+    height: 20%;
+    font-size: 20px;
+    text-align: right;
+    float: left;
+}
+.List {
+    width: 100%;
+    height: 60%;
+    font-size: 22px;
+}
+.Group {
+    width: 50%;
+    height: 20%;
+    font-size: 20px;
+    float: left;
+}
+.Penalty {
+    width: 50%;
+    height: 20%;
+    font-size: 20px;
+    text-align: right;
+    float: left;
+}
+button {
+    color: red;
+    float: right;
+}
