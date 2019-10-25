@@ -1,7 +1,6 @@
 .Egg {
     height: 90%;
     width: 100%;
-    background-color: #e6a8ed;
 }
 .EggTitle {
     width: 50%;
@@ -22,17 +21,22 @@
     font-size: 22px;
 }
 .Group {
-    width: 50%;
+    width: 40%;
     height: 20%;
     font-size: 20px;
     float: left;
 }
 .Penalty {
-    width: 50%;
+    width: 30%;
     height: 20%;
     font-size: 20px;
     text-align: right;
     float: left;
+}
+.IconButton {
+    width: 30%;
+    height: 20%;
+    float: right;
 }
 button {
     color: red;

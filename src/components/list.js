@@ -6,6 +6,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
+import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
+import InfoIcon from '@material-ui/icons/Info';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Tooltip from '@material-ui/core/Tooltip';
 import "./list.css"
 
 const useStyles = makeStyles(theme => ({
@@ -55,8 +59,15 @@ export default function SpacingGrid() {
                       <li>아름다운 이 땅에 금수강산에<button>미완료</button></li>
                     </ul>
                   </div>
-                  <div className="Group"> 그룹 아이콘 오는 곳 </div>
+                  <div className="Group"> GROUP 
+                    <AccountCircleRoundedIcon />
+                    <AccountCircleRoundedIcon />
+                  </div>
                   <div className="Penalty"> 벌칙 : 미정 </div>
+                  <div className="IconButton">
+                    <Tooltip title="정보"> <InfoIcon /> </Tooltip>
+                    <SettingsIcon />
+                  </div>
                 </div>
               </Paper>
             </Grid>
