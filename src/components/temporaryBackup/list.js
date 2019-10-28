@@ -1,14 +1,14 @@
 import React from "react"
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import {withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import InfoIcon from '@material-ui/icons/Info';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Tooltip from '@material-ui/core/Tooltip';
 import "./list.css"
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -20,28 +20,13 @@ const styles = theme => ({
   control: {
     padding: theme.spacing(2),
   },
-});
+}));
 
-class List extends React.Component {
+export default function SpacingGrid() {
+  const classes = useStyles();
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      message : "ABCDEFG"
-    }
-  }
-  
-  onClickTest = () => {
-    this.setState({
-      message : "HIJKLMNOP"
-    });
-  }
-
-  render() {
-    const {classes} = this.props;
-
-    return (
-      <Grid
+  return (
+    <Grid
         container justify="center"
         spacing={3}
         direction="column"
@@ -54,9 +39,9 @@ class List extends React.Component {
               <div className="Deadline"> 마감까지 N일 남음 </div>
               <div className="List">
                 <ul>
-                  <li>동해물과 백두산이 마르고 닳도록<input type="button" value={this.state.message} id="btn" onClick={this.onClickTest}></input></li>
-                  <li>울릉도 동남쪽 뱃길따라 이백리<input type="button" value={this.state.message} id="btn" onClick={this.onClickTest}></input></li>
-                  <li>아름다운 이 땅에 금수강산에<input type="button" value={this.state.message} id="btn" onClick={this.onClickTest}></input></li>
+                  <li>동해물과 백두산이 마르고 닳도록<input type="button" value="미완료" id="btn1" onClick={isComplete1}></input></li>
+                  <li>울릉도 동남쪽 뱃길따라 이백리<input type="button" value="미완료" id="btn2" onClick={isComplete2}></input></li>
+                  <li>아름다운 이 땅에 금수강산에<input type="button" value="미완료" id="btn3" onClick={isComplete3}></input></li>
                 </ul>
               </div>
               <div className="Group"> GROUP
@@ -72,7 +57,33 @@ class List extends React.Component {
           </Grid>
         ))}
       </Grid>
-    )
+  );
+}
+
+function isComplete1() {
+  var x = document.getElementById("btn1");
+  if(x.value == "미완료") {
+    x.value = "완료";
+    x.style.color = "green";
+  } else if(x.value == "완료") {
+    alert("이미 완료했습니다.");
   }
 }
-export default withStyles(styles)(List);
+function isComplete2() {
+  var x = document.getElementById("btn2");
+  if(x.value == "미완료") {
+    x.value = "완료";
+    x.style.color = "green";
+  } else if(x.value == "완료") {
+    alert("이미 완료했습니다.");
+  }
+}
+function isComplete3() {
+  var x = document.getElementById("btn3");
+  if(x.value == "미완료") {
+    x.value = "완료";
+    x.style.color = "green";
+  } else if(x.value == "완료") {
+    alert("이미 완료했습니다.");
+  }
+}

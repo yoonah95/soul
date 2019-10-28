@@ -1,7 +1,3 @@
-.Egg {
-    height: 90%;
-    width: 100%;
-}
 .EggTitle {
     width: 50%;
     height: 20%;
@@ -30,7 +26,6 @@
     width: 30%;
     height: 20%;
     font-size: 20px;
-    text-align: right;
     float: left;
 }
 .IconButton {
@@ -38,7 +33,7 @@
     height: 20%;
     float: right;
 }
-button {
+#btn {
     color: red;
     float: right;
 }
