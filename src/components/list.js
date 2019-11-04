@@ -1,8 +1,8 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Egg from './list/egg';
 import update from 'react-addons-update';
+import Egg from './list/egg';
 import "./list/list.css";
 
 export default class List extends React.Component {
@@ -19,6 +19,7 @@ export default class List extends React.Component {
           ],
           penalty : "미정",
           group : "STONES",
+          createdDate : "2019/01/01 오후 10:10",
           visible : true
         },
         {
@@ -31,6 +32,7 @@ export default class List extends React.Component {
           ],
           penalty : "4 dollar",
           group : "HANSUNG",
+          createdDate : "2019/02/02 오전 11:11",
           visible : true
         }
       ]
@@ -41,7 +43,6 @@ export default class List extends React.Component {
     var groupName = e.target.value;
     var egg = this.state.eggs;
     var idx = [0, 1];
-    console.log(groupName + ' 선택됨');
     idx.map(i => {
       if(egg[i].group !== groupName) {
         this.setState({
@@ -54,8 +55,6 @@ export default class List extends React.Component {
             }
           )
         });
-        console.log(egg[i].group + ' 제외됨');
-        console.log(egg[i].group + '의 visible: ' + egg[i].visible);
       } else {
         this.setState({
           eggs: update(
@@ -67,7 +66,6 @@ export default class List extends React.Component {
             }
           )
         });
-        console.log(egg[i].group + '의 visible: ' + egg[i].visible);
       }
       return(0);
     })
@@ -115,9 +113,10 @@ export default class List extends React.Component {
                 oneEgg = {egg[i]}
               ></Egg>);
             } else {
-              return(<div></div>);
+              return(null);
             }
           })}
+
         </Grid>
       </div>
     )

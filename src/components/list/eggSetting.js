@@ -1,13 +1,16 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import InfoIcon from '@material-ui/icons/Info';
+import SettingsIcon from '@material-ui/icons/Settings';
 import Tooltip from '@material-ui/core/Tooltip';
+import './eggSetting.css';
 
 const styles = theme => ({
   root: {
@@ -42,7 +45,14 @@ const DialogContent = withStyles(theme => ({
   },
 }))(MuiDialogContent);
 
-class EggInfo extends React.Component {
+const DialogActions = withStyles(theme => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
+
+class EggSetting extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,30 +65,30 @@ class EggInfo extends React.Component {
   };
   handleClose = () => {
     this.setState({open : false});
-  }; 
+  };
 
   render() {
     return (
       <div>
-        <Tooltip title="상세정보" placement="top"><InfoIcon onClick={this.handleClickOpen.bind(this)} /></Tooltip>
+        <Tooltip title="설정" placement="top"><SettingsIcon onClick={this.handleClickOpen.bind(this)} /></Tooltip>
         <Dialog onClose={this.handleClose.bind(this)} aria-labelledby="customized-dialog-title" open={this.state.open}>
         <DialogTitle id="customized-dialog-title" onClose={this.handleClose.bind(this)}>
-          에그 상세 정보
+          에그 설정
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            에그 제목 : {this.props.eggTitle}
-          </Typography>
-          <Typography gutterBottom>
-            벌칙 : {this.props.penalty}
-          </Typography>
-          <Typography gutterBottom>
-            에그 생성 날짜 : {this.props.createdDate}
-          </Typography>
+          에그 제목 <input type="text"></input>
         </DialogContent>
+        <DialogContent dividers>
+          벌칙 <input type="text"></input>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={this.handleClose.bind(this)} color="primary">
+            저장
+          </Button>
+        </DialogActions>
         </Dialog>
       </div>
     )
   }
 }
-export default withStyles(styles)(EggInfo);
+export default withStyles(styles)(EggSetting);

@@ -17,7 +17,7 @@
     font-size: 22px;
 }
 .Group {
-    width: 40%;
+    width: 30%;
     height: 20%;
     font-size: 20px;
     float: left;
@@ -29,9 +29,8 @@
     float: left;
 }
 .IconButton {
-    width: 30%;
     height: 20%;
-    float: right;
+    float: left;
 }
 .btn {
     color: red;

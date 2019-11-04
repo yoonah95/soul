@@ -2,10 +2,10 @@ import React from "react";
 import Paper from '@material-ui/core/Paper';
 import {withStyles } from '@material-ui/core/styles';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
-import InfoIcon from '@material-ui/icons/Info';
-import SettingsIcon from '@material-ui/icons/Settings';
 import Tooltip from '@material-ui/core/Tooltip';
 import update from 'react-addons-update';
+import EggInfo from './eggInfo';
+import EggSetting from './eggSetting';
 import "./egg.css";
 
 const styles = theme => ({
@@ -38,6 +38,7 @@ class Egg extends React.Component {
         todos : this.props.oneEgg.todos,
         penalty : this.props.oneEgg.penalty,
         group : this.props.oneEgg.group,
+        createdDate : this.props.oneEgg.createdDate,
         visible : this.props.oneEgg.visible
       }
   }
@@ -67,24 +68,28 @@ class Egg extends React.Component {
     });
 
     return (
-          <Paper className={classes.paper}>
-            <div className="EggTitle"> {this.state.eggTitle} </div>
-            <div className="Deadline"> 마감까지 {this.state.deadline} 남음 </div>
-            <div className="List">
-              <ul>
-                {lists}
-              </ul>
-            </div>
-            <div className="Group"> {this.state.group}
-              <AccountCircleRoundedIcon />
-              <AccountCircleRoundedIcon />
-            </div>
-            <div className="Penalty"> 벌칙 : {this.state.penalty} </div>
-            <div className="IconButton">
-              <Tooltip title="상세정보" placement="top"><InfoIcon /></Tooltip>
-              <Tooltip title="설정" placement="top"><SettingsIcon /></Tooltip>
-            </div>
-          </Paper>
+      <Paper className={classes.paper}>
+        <div className="EggTitle"> {this.state.eggTitle} </div>
+        <div className="Deadline"> 마감까지 {this.state.deadline} 남음 </div>
+        <div className="List">
+          <ul>
+            {lists}
+          </ul>
+        </div>
+        <div className="Group"> {this.state.group}
+          <AccountCircleRoundedIcon />
+          <AccountCircleRoundedIcon />
+        </div>
+        <div className="Penalty"> 벌칙 : {this.state.penalty} </div>
+        <div className="IconButton">
+          <EggInfo
+            eggTitle = {this.state.eggTitle}
+            penalty = {this.state.penalty}
+            createdDate = {this.state.createdDate}
+          />
+          <EggSetting/>
+        </div>
+      </Paper>
     )
   }
 }
