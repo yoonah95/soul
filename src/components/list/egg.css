@@ -7,7 +7,7 @@
 .Deadline {
     width: 50%;
     height: 20%;
-    font-size: 20px;
+    font-size: 25px;
     text-align: right;
     float: left;
 }
@@ -33,7 +33,10 @@
     height: 20%;
     float: right;
 }
-#btn {
+.btn {
     color: red;
     float: right;
+}
+li {
+    margin-top: 10px;
 }

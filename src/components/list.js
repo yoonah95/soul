@@ -1,78 +1,125 @@
-import React from "react"
+import React from "react";
+import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import {withStyles } from '@material-ui/core/styles';
-import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
-import InfoIcon from '@material-ui/icons/Info';
-import SettingsIcon from '@material-ui/icons/Settings';
-import Tooltip from '@material-ui/core/Tooltip';
-import "./list.css"
+import Egg from './list/egg';
+import update from 'react-addons-update';
+import "./list/list.css";
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    height: 400,
-    width: 600,
-    padding: 3
-  },
-  control: {
-    padding: theme.spacing(2),
-  },
-});
-
-class List extends React.Component {
-
+export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message : "ABCDEFG"
+      eggs : [{
+          eggTitle : "할 일 목록1",
+          deadline : "7일",
+          todos : [
+            {content: "동해물과 백두산이 마르고 닳도록", complete: "미완료", done: "완료했을 경우 버튼을 클릭하세요."},
+            {content: "울릉도 동남쪽 뱃길 따라 이백리", complete: "미완료", done: "완료했을 경우 버튼을 클릭하세요."},
+            {content: "아름다운 이 땅에 금수강산에", complete: "미완료", done: "완료했을 경우 버튼을 클릭하세요."}
+          ],
+          penalty : "미정",
+          group : "STONES",
+          visible : true
+        },
+        {
+          eggTitle : "To-do List 1",
+          deadline : "30일",
+          todos : [
+            {content: "Spooky scary skeleton", complete: "미완료", done: "완료했을 경우 버튼을 클릭하세요."},
+            {content: "Beep beep I'm a sheep", complete: "미완료", done: "완료했을 경우 버튼을 클릭하세요."},
+            {content: "So very totally cool", complete: "미완료", done: "완료했을 경우 버튼을 클릭하세요."}
+          ],
+          penalty : "4 dollar",
+          group : "HANSUNG",
+          visible : true
+        }
+      ]
     }
   }
-  
-  onClickTest = () => {
-    this.setState({
-      message : "HIJKLMNOP"
-    });
+
+  selectGroup = e => {
+    var groupName = e.target.value;
+    var egg = this.state.eggs;
+    var idx = [0, 1];
+    console.log(groupName + ' 선택됨');
+    idx.map(i => {
+      if(egg[i].group !== groupName) {
+        this.setState({
+          eggs: update(
+            this.state.eggs,
+            {
+              [i]: {
+                visible: {$set: false}
+              }
+            }
+          )
+        });
+        console.log(egg[i].group + ' 제외됨');
+        console.log(egg[i].group + '의 visible: ' + egg[i].visible);
+      } else {
+        this.setState({
+          eggs: update(
+            this.state.eggs,
+            {
+              [i]: {
+                visible: {$set: true}
+              }
+            }
+          )
+        });
+        console.log(egg[i].group + '의 visible: ' + egg[i].visible);
+      }
+      return(0);
+    })
   }
 
   render() {
-    const {classes} = this.props;
+    var egg = this.state.eggs;
+    var idx = [0, 1];
 
     return (
-      <Grid
-        container justify="center"
-        spacing={3}
-        direction="column"
-        alignItems="center"
-      >
-        {[0, 1, 2].map(value => (
-          <Grid key={value} item>
-            <Paper className={classes.paper}>
-              <div className="EggTitle"> 할 일 목록 </div>
-              <div className="Deadline"> 마감까지 N일 남음 </div>
-              <div className="List">
-                <ul>
-                  <li>동해물과 백두산이 마르고 닳도록<input type="button" value={this.state.message} id="btn" onClick={this.onClickTest}></input></li>
-                  <li>울릉도 동남쪽 뱃길따라 이백리<input type="button" value={this.state.message} id="btn" onClick={this.onClickTest}></input></li>
-                  <li>아름다운 이 땅에 금수강산에<input type="button" value={this.state.message} id="btn" onClick={this.onClickTest}></input></li>
-                </ul>
-              </div>
-              <div className="Group"> GROUP
-                <AccountCircleRoundedIcon />
-                <AccountCircleRoundedIcon />
-              </div>
-              <div className="Penalty"> 벌칙 : 미정 </div>
-              <div className="IconButton">
-                <Tooltip title="상세정보" placement="top-start"><InfoIcon /></Tooltip>
-                <Tooltip title="설정" placement="top-start"><SettingsIcon /></Tooltip>
-              </div>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
+      <div>
+        <Typography variant="h3" align="center">내 에그 목록</Typography>
+        <hr />
+        <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
+          <p>그룹 : </p>
+          <select onChange={this.selectGroup.bind(this)}>
+            <option value="groupAll">전체</option>
+            {idx.map(i => {
+              return(<option value={egg[i].group}>{egg[i].group}</option>);
+            })}
+          </select>
+          <p>마감 : </p>
+          <select>
+            <option value="deadlinAll">전체</option>
+            <option value="end">완료</option>
+            <option value="notEnd">진행중</option>
+          </select>
+          <p>정렬 : </p>
+          <select>
+            <option value="regDesc">등록 날짜 내림차순</option>
+            <option value="regAsc">등록 날짜 오름차순</option>
+            <option value="deadlineDesc">남은 일수 내림차순</option>
+            <option value="deadlineAsc">남은 일수 오름차순</option>
+          </select>
+        </Grid>
+        <hr />
+        <Grid
+          container justify="center"
+          spacing={3}
+          direction="column"
+          alignItems="center">
+          {idx.map(i => {
+            if(egg[i].visible) {
+              return(<Egg
+                oneEgg = {egg[i]}
+              ></Egg>);
+            } else {
+              return(<div></div>);
+            }
+          })}
+        </Grid>
+      </div>
     )
   }
 }
-export default withStyles(styles)(List);
