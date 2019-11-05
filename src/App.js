@@ -7,9 +7,11 @@ import Register from "./components/register"
 import List from "./components/list"
 import Group from "./components/group"
 import Login from "./components/login"
+import Profile from "./components/profile"
+import Editprofile from "./components/editprofile"
+import Join from "./components/join"
 import Success from "./components/success"
 import createPenalty from "./components/createPenalty"
-
 function App() {
   return (
     <div className="App">
@@ -21,6 +23,9 @@ function App() {
           <Route path="/list" component={List} />
           <Route path="/group" component={Group} />
           <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/editprofile" component={Editprofile} />
+          <Route path="/join" component={Join} />
           <Route path="/success" component={Success}/>
           <Route path="/createPenalty" component={createPenalty}/>
         </Switch>
