@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, makeStyles, Container } from '@material-ui/core';
+import { Avatar, Button, CssBaseline, TextField, Link, Box, Typography, makeStyles, Container } from '@material-ui/core';
 
 import { purple } from '@material-ui/core/colors';
 import image from '../images/icons8-eggplant-48.png'
@@ -20,7 +20,6 @@ function Copyright() {
 const useStyles = makeStyles(theme => ({
   '@global': {
     body: {
-      //backgroundColor: theme.palette.common.white,
       backgroundColor: purple[50]
     },
   },
@@ -58,15 +57,12 @@ const useStyles = makeStyles(theme => ({
       padding: '4px !important', // override inline-style
     },
   },
-
 }));
 
-
-
-
-export default function SignIn() {
+export default function Register() {
   const classes = useStyles();
   return (
+
     <Container component="main" maxWidth="xs">
       <CssBaseline />
 
@@ -85,6 +81,7 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
           />
+
           <TextField
             className={classes.textField}
             variant="outlined"
@@ -97,40 +94,36 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" className={classes.textField} />}
-            label="아이디 저장"
+
+          <TextField
+            className={classes.textField}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="비밀번호 확인"
+            type="password"
+            id="password"
+            autoComplete="current-password"
           />
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            //color="#673ab7"
             className={classes.submit}
           >
-            로그인
+            가입
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Typography >
-                <Link color="#673ab7" href="#" variant="body2">
-                  Forgot password?
-              </Link>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography >
-                <Link color="#673ab7" href="/join" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Typography>
-            </Grid>
-          </Grid>
+
         </form>
       </div>
+
       <Box mt={8}>
         <Copyright />
       </Box>
     </Container>
+    
   );
 }

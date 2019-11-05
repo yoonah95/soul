@@ -46,6 +46,9 @@ class Header extends React.Component {
             <Link to="/login" style={{ textDecoration: "none" }}>
               <Button className={classes.button}>Login</Button>
             </Link>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <Button className={classes.button}>프로필</Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </div>
