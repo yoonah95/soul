@@ -38,17 +38,36 @@ class Egg extends React.Component {
         todos : this.props.oneEgg.todos,
         penalty : this.props.oneEgg.penalty,
         group : this.props.oneEgg.group,
-        createdDate : this.props.oneEgg.createdDate,
-        visible : this.props.oneEgg.visible
+        createdDate : this.props.oneEgg.createdDate
       }
+  }
+
+  getCompletedTime() {
+    var d = new Date();
+    var year = d.getFullYear();
+    var month = d.getMonth() + 1;
+    var date = d.getDate();
+    var hour = d.getHours()
+    var minute = d.getMinutes();
+
+    if(hour > 12) {hour = "오후 " + (hour - 12);}
+    else if(hour === 12) {hour = "오후 " + hour;}
+    else if(hour === 24) {hour = "오전 " + (hour - 12);}
+    else {hour = "오전 " + hour;}
+
+    var result = year + "/" + month + "/" + date + " " + hour + ":" + minute;
+    return(result);
   }
 
   render() {
     const {classes} = this.props;
 
     var lists = [];
-    var idx = [0, 1, 2];
+    var idx = [];
     var data = this.state.todos;
+    var todoLen = data.length;
+
+    for(var i = 0; i < todoLen; i++) {idx.push(i);}
 
     idx.map(i => {
       lists.push(<li>{data[i].content}<Tooltip title={data[i].done} placement="top"><input type="button" value={data[i].complete} className="btn" onClick={function() {
@@ -58,19 +77,19 @@ class Egg extends React.Component {
             {
               [i]: {
                 complete: {$set: "완료"},
-                done: {$set: "완료날짜 : 2019/01/01 오후 10:10"}
+                done: {$set: "완료날짜 : " + this.getCompletedTime()}
               }
             }
           )
         });
       }.bind(this)}/></Tooltip></li>);
-      return(0);
+      return(null);
     });
 
     return (
       <Paper className={classes.paper}>
         <div className="EggTitle"> {this.state.eggTitle} </div>
-        <div className="Deadline"> 마감까지 {this.state.deadline} 남음 </div>
+        <div className="Deadline"> {this.state.deadline} </div>
         <div className="List">
           <ul>
             {lists}
@@ -88,6 +107,9 @@ class Egg extends React.Component {
             createdDate = {this.state.createdDate}
           />
           <EggSetting/>
+        </div>
+        <div className="createdDate">
+          {this.state.createdDate} 생성됨
         </div>
       </Paper>
     )

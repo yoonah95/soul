@@ -23,13 +23,17 @@
     float: left;
 }
 .Penalty {
-    width: 30%;
+    width: 50%;
     height: 20%;
     font-size: 20px;
     float: left;
 }
 .IconButton {
+    width: 20%;
     height: 20%;
+    float: left;
+}
+.createdDate {
     float: left;
 }
 .btn {
