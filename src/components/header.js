@@ -1,12 +1,14 @@
 import React from "react"
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core"
+import { AppBar, Toolbar, Typography, Button, Avatar } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
 import { DEFAULT_BACKGROUND_COLOR, TITLE } from "../constants"
+import { teal } from "@material-ui/core/colors"
 import { Link } from "react-router-dom"
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    backgroundColor : teal[100]
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -45,6 +47,9 @@ class Header extends React.Component {
             </Link>
             <Link to="/login" style={{ textDecoration: "none" }}>
               <Button className={classes.button}>Login</Button>
+            </Link>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <Button className={classes.button}>프로필</Button>
             </Link>
           </Toolbar>
         </AppBar>
