@@ -7,6 +7,8 @@ import Register from "./components/register"
 import List from "./components/list"
 import Group from "./components/group"
 import Login from "./components/login"
+import Success from "./components/success"
+import createPenalty from "./components/createPenalty"
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/list" component={List} />
           <Route path="/group" component={Group} />
           <Route path="/login" component={Login} />
+          <Route path="/success" component={Success}/>
+          <Route path="/createPenalty" component={createPenalty}/>
         </Switch>
       </Router>
     </div>
