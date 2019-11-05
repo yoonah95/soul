@@ -10,6 +10,8 @@ import Login from "./components/login"
 import Profile from "./components/profile"
 import Editprofile from "./components/editprofile"
 import Join from "./components/join"
+import Success from "./components/success"
+import createPenalty from "./components/createPenalty"
 function App() {
   return (
     <div className="App">
@@ -24,6 +26,8 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/editprofile" component={Editprofile} />
           <Route path="/join" component={Join} />
+          <Route path="/success" component={Success}/>
+          <Route path="/createPenalty" component={createPenalty}/>
         </Switch>
       </Router>
     </div>
