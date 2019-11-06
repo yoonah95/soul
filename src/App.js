@@ -11,9 +11,7 @@ import Login from "./components/login"
 import GroupMake from "./components/groupMake"
 import GroupList from "./components/groupList"
 import GroupInvite from "./components/groupInvite"
-import Test from "./components/test"
 import GroupSuccess from "./components/groupSuccess"
-
 
 import Profile from "./components/profile"
 import Editprofile from "./components/editprofile"
@@ -36,15 +34,13 @@ function App() {
           <Route path="/ll" component={GroupMake} />
           <Route path="/lll" component={GroupList} />
           <Route path="/llll" component={GroupInvite} />
-          <Route path="/test" component={Test} />
           <Route path="/lllii" component={GroupSuccess} />
 
           <Route path="/profile" component={Profile} />
           <Route path="/editprofile" component={Editprofile} />
           <Route path="/join" component={Join} />
-          <Route path="/success" component={Success}/>
-          <Route path="/createPenalty" component={createPenalty}/>
-
+          <Route path="/success" component={Success} />
+          <Route path="/createPenalty" component={createPenalty} />
         </Switch>
       </Router>
     </div>
